@@ -1,20 +1,20 @@
-# IMPLEMENTASI RSA SEDERHANA
+# RSA IMPLEMENTATION
 
-# fungsi mencari gcd
+# fungsi gcd
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
     return a
 
 
-# fungsi mencari inverse modular
+# mencari inverse modular
 def mod_inverse(e, phi):
     for d in range(1, phi):
         if (d * e) % phi == 1:
             return d
 
 
-# KEY GENERATION
+# Key Generation
 p = 11
 q = 17
 
@@ -22,19 +22,18 @@ n = p * q
 phi = (p-1)*(q-1)
 
 e = 7
-
 d = mod_inverse(e, phi)
 
 print("Public Key:", (e, n))
 print("Private Key:", (d, n))
 
 
-# ENKRIPSI
+# Enkripsi
 def encrypt(m, e, n):
     return (m ** e) % n
 
 
-# DEKRIPSI
+# Dekripsi
 def decrypt(c, d, n):
     return (c ** d) % n
 
